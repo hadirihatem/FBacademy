@@ -3,14 +3,7 @@ const usercontrollers = require("../../controllers/user.controller");
 const check = require("../../helpers/checkRole");
 
 const initgetRoutes = (app) => {
-  app.get("/user/:userId", [authmiddleware, usercontrollers.getuser]);
-  app.get("/users", [
-    authmiddleware,
-    (req, res) => {
-      if (!check.authRole(req, res, ("admin"))) return;
-      res.send("admin page");
-    },
-    usercontrollers.list,
-  ]);
+  app.get("/user/:userId", [authmiddleware, usercontrollers.getbyId]);
+  app.get("/users", [authmiddleware,check.authroles('admin') ,usercontrollers.list]);
 };
 module.exports = initgetRoutes;

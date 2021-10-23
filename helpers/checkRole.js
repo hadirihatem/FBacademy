@@ -1,12 +1,19 @@
-const user = require('../models/user')
+const User = require('../models/user')
 var jwt =require('jsonwebtoken')
- exports.authRole=(...roles)=> (req,res,next)=> {
-  
+var findByrole= require('../controllers/user.controller')
+
+
+
+ exports.authroles=(...roles)=> (req,res,next)=> {
+
     //roles ['admin','user','coach']
     roles && !roles.includes(req.user.role)?
     res.status(401).json("you are not authorized") : 
     next()
 }
+
+
+
 
 
 // exports.permit=(roles)=>{

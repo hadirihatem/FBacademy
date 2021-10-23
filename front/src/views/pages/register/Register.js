@@ -24,6 +24,7 @@ const Register = ({history}) => {
     Lname:"",
     phone :"",
     email:"",
+    age:"",
     password:"",
     permissionLevel:1,
  });
@@ -31,7 +32,7 @@ const dispatch = useDispatch()
 const auth = useSelector((state) => state.auth);
 useEffect(() => {
 if(auth.isAuth){
-history.push("/test")
+history.push("/dashboard")
 }
 
 }, [auth.isAuth,history])
@@ -78,6 +79,15 @@ history.push("/test")
                   </CInputGroupText>
                 </CInputGroupPrepend>
                 <CInput type="number" placeholder="Phone" name="phone" onChange={handlechange} />
+              </CInputGroup>
+
+              <CInputGroup className="mb-3">
+                <CInputGroupPrepend>
+                  <CInputGroupText>
+                    <CIcon name="cil-user" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CInput type="number" placeholder="age" name="age" onChange={handlechange} />
               </CInputGroup>
 
                   <CInputGroup className="mb-3">

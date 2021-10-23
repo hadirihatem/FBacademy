@@ -74,19 +74,19 @@ exports.login = (req, res) => {
 
 //--------get user ---------
 
-exports.getuser = (req, res) => {
-  User.findById(req.params.userId)
+// exports.getuser = (req, res) => {
+//   User.findById(req.params.userId)
 
-    .then((user) => {
-      if (!user) {
-        return res.status(404).json({ msg: "user not found" });
-      }
-      res.status(200).json(user);
-    })
-    .catch((err) => {
-      res.status(500).json({ msg: "server error" });
-    });
-};
+//     .then((user) => {
+//       if (!user) {
+//         return res.status(404).json({ msg: "user not found" });
+//       }
+//       res.status(200).json(user);
+//     })
+//     .catch((err) => {
+//       res.status(500).json({ msg: "server error" });
+//     });
+// };
 
 
 
@@ -151,6 +151,19 @@ exports.list = (req, res) => {
       status: "success",
       message: "users fetched",
       data: result,
+    });
+  });
+};
+
+
+exports.findByrole = (role) => {
+  return new Promise((resolve, reject) => {
+    User.find({ role: role }).exec(function (err, user) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(user);
+      }
     });
   });
 };

@@ -15,5 +15,7 @@ module.exports = (req,res,next)=>{
         req.userId=payload.userId
         next()
     })
+  //  req.user=currentUser
+    next()
 }
 

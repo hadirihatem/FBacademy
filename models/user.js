@@ -13,8 +13,8 @@ const UserSchema = new mongoose.Schema({
     },
     role: {
         type:String,
-        all:['admin','coach','client'],
-        default:'client' ,
+        enum:['admin','coach','client'],
+        default:'client'  
     } ,
     permissionLevel: {
         type: Number,

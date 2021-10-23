@@ -5,11 +5,15 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-  CImg
+  CImg,
+  CLink
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { useDispatch } from 'react-redux'
+import { logoutUser } from 'src/action/authaction'
 
 const TheHeaderDropdown = () => {
+  const dispatch = useDispatch()
   return (
     <CDropdown
       inNav
@@ -82,7 +86,7 @@ const TheHeaderDropdown = () => {
         <CDropdownItem divider />
         <CDropdownItem>
           <CIcon name="cil-lock-locked" className="mfe-2" />
-          Lock Account
+        <CLink onClick={() => dispatch(logoutUser())} >Logout</CLink>
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
@@ -90,3 +94,5 @@ const TheHeaderDropdown = () => {
 }
 
 export default TheHeaderDropdown
+
+

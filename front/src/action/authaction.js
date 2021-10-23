@@ -33,7 +33,7 @@ export const registerUser = (info) => (dispatch) => {
 
 
 export const loadUser = (id) => (dispatch) => {
-  setToken();
+  setToken()
   axios
     .get(`http://localhost:5000/user/${id}`)
     .then((res) =>

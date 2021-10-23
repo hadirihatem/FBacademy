@@ -28,7 +28,7 @@ const Dashboard = () => {
         if(!auth.user)
         dispatch(loadUser())
 
-    }, [dispatch,auth.user])
+    }, [auth.user])
   return (
     <>
     <h1>hello</h1>
