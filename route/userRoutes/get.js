@@ -4,6 +4,6 @@ const check = require("../../helpers/checkRole");
 
 const initgetRoutes = (app) => {
   app.get("/user/:userId", [authmiddleware, usercontrollers.getbyId]);
-  app.get("/users", [authmiddleware,check.authroles('client') ,usercontrollers.list]);
+  app.get("/users", [authmiddleware,usercontrollers.list]);
 };
 module.exports = initgetRoutes;

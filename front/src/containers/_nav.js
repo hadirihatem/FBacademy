@@ -15,7 +15,7 @@ const _nav = [
   },
 
   {
-    
+
     _tag: "CSidebarNavItem",
     name: "Test",
     to: "/test",
@@ -42,11 +42,25 @@ const _nav = [
       {
         _tag: "CSidebarNavItem",
         name: "client",
-        to: "/users/client",
+        to: "/users",
       }
     ],
   },
 
+  {
+    _tag: "CSidebarNavDropdown",
+    name: "Users",
+    route: "/users",
+    icon: "cil-puzzle",
+    _children: [
+      {
+        _tag: "CSidebarNavItem",
+        name: "users",
+        to: "/users",
+      },
+
+    ],
+  },
 
   {
     _tag: "CSidebarNavDropdown",

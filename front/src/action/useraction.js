@@ -8,12 +8,13 @@ import
 }from "./index.js"
 import axios from "axios";
 import setToken from "../setToken";
+import { loadUser } from "./authaction.js";
 
 
 
 export const getUsersList = () => (dispatch) => {
   axios
-    .get(`http://localhost:4000/users`)
+    .get(`http://localhost:5000/users`)
     .then((res) => {
       dispatch({
         type: GETUSERS_SUCCESS,
@@ -30,7 +31,7 @@ export const getUsersList = () => (dispatch) => {
 
 
 export const updateuser=(id,data )=>(dispatch)=>{
-  axios.put(`http://localhost:4000/users/${id}`, data)
+  axios.put(`http://localhost:5000/users/${id}`, data)
   .then((res) => {
     dispatch({
       type: UPDATEUSER_SUCCES,

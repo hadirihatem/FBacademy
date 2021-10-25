@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
+import {useDispatch} from 'react-redux'
 import {
   CBadge,
   CCard,
@@ -12,6 +13,9 @@ import {
 } from '@coreui/react'
 
 import usersData from './UsersData'
+import { useSelector } from 'react-redux'
+import { getUsersList } from 'src/action/useraction'
+
 
 const getBadge = status => {
   switch (status) {
@@ -24,6 +28,12 @@ const getBadge = status => {
 }
 
 const Users = () => {
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUsersList());
+  }, []);
+  const user = useSelector(state => state.user.users)
   const history = useHistory()
   const queryPage = useLocation().search.match(/page=([0-9]+)/, '')
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1)
@@ -47,17 +57,17 @@ const Users = () => {
           </CCardHeader>
           <CCardBody>
           <CDataTable
-            items={usersData}
+            items={user}
             fields={[
-              { key: 'name', _classes: 'font-weight-bold' },
-              'registered', 'role', 'status'
+              { key: 'Fname', _classes: 'font-weight-bold' },
+              'Lname', 'role', 'age','email'
             ]}
             hover
             striped
             itemsPerPage={5}
             activePage={page}
             clickableRows
-            onRowClick={(item) => history.push(`/users/${item.id}`)}
+            onRowClick={(item) => history.push(`/users/${item._id}`)}
             scopedSlots = {{
               'status':
                 (item)=>(
@@ -73,7 +83,7 @@ const Users = () => {
             activePage={page}
             onActivePageChange={pageChange}
             pages={5}
-            doubleArrows={false} 
+            doubleArrows={false}
             align="center"
           />
           </CCardBody>
