@@ -1,21 +1,25 @@
 const express = require("express");
 const Connectdb = require("./helpers/Connectdb");
-const cors=require('cors')
+const cors = require("cors");
 const app = express();
 
 const userRoutes = require("./route/userRoutes/user.routes");
 const profileRoutes = require("./route/profilRoutes/pofile.routes");
 
-
-app.use(cors())
+app.use(cors());
 
 //connect to data base
 Connectdb();
 
 // middleware
 
-
 app.use(express.json());
+
+// app.use((req, res, next) => {
+//   req.requestTime = new Date.toString();
+//   console.log(req.headers);
+//   next();
+// });
 
 // define route
 

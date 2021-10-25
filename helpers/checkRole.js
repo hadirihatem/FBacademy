@@ -7,7 +7,8 @@ var findByrole= require('../controllers/user.controller')
  exports.authroles=(...roles)=> (req,res,next)=> {
 
     //roles ['admin','user','coach']
-    roles && !roles.includes(req.user.role)?
+    roles && !roles.includes(req.userId.role,console.log(req.userId.role))?
+    
     res.status(401).json("you are not authorized") : 
     next()
 }

@@ -8,14 +8,19 @@ module.exports = (req,res,next)=>{
     if (!token){
         return res.status(401).json({msg:"YOU ARE NOT AUTHORIZED!"})
     }
-    jwt.verify(token,process.env.SECRET_KEY,(err,payload)=>{
+  jwt.verify(token,process.env.SECRET_KEY,(err,payload)=>{
         if (err){
             throw err
         }
         req.userId=payload.userId
         next()
+
     })
   //  req.user=currentUser
-    next()
+    
 }
+
+
+
+
 

@@ -18,6 +18,7 @@ const Register = React.lazy(() => import('./views/pages/register/Register'));
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'));
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'));
 
+
 function App() {
 
 
@@ -25,10 +26,12 @@ function App() {
       <Router>
           <React.Suspense fallback={loading}>
             <Switch>
+
             <Route exact path="/login" component={Login} />
             <Route exact path="/register"  component={Register} />
             <Route exact path="/404" component={Page404}/>
             <Route exact path="/500"  component={Page500} />
+
             <PrivetRoute path="/"  component={TheLayout} />
             </Switch>
           </React.Suspense>

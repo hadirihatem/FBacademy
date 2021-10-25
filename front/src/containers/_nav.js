@@ -11,7 +11,23 @@ const _nav = [
       color: "info",
       text: "NEW",
     },
+
   },
+
+  {
+    
+    _tag: "CSidebarNavItem",
+    name: "Test",
+    to: "/test",
+    icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon" />,
+    badge: {
+      color: "info",
+      text: "NEW",
+    },
+
+  },
+
+
   {
     _tag: "CSidebarNavDropdown",
     name: "Users",
@@ -30,6 +46,8 @@ const _nav = [
       }
     ],
   },
+
+
   {
     _tag: "CSidebarNavDropdown",
     name: "Register",
@@ -54,6 +72,34 @@ const _nav = [
         _tag: "CSidebarNavItem",
         name: "login",
         to: "/login",
+      },
+
+    ],
+  },
+  {
+    _tag: "CSidebarNavDropdown",
+    name: "icons",
+    route: "/icons",
+    icon: "cil-puzzle",
+    _children: [
+      {
+        _tag: "CSidebarNavItem",
+        name: "brands",
+        to: "/icons/brands",
+      },
+
+    ],
+  },
+  {
+    _tag: "CSidebarNavDropdown",
+    name: "buttons",
+    route: "/buttons",
+    icon: "cil-puzzle",
+    _children: [
+      {
+        _tag: "CSidebarNavItem",
+        name: "brandButton",
+        to: "/buttons/brand-buttons",
       },
 
     ],
