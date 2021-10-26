@@ -4,13 +4,22 @@ var findByrole= require('../controllers/user.controller')
 
 
 
- exports.authroles=(...roles)=> (req,res,next)=> {
+ exports.authroles=(...roles)=> async (req,res,next)=> {
+     try {
+         console.log(roles)
+        const user= await User.findById(req.userId)
+        console.log(user)
+        roles && !roles.includes(user?.role)?
+        res.status(401).json("you are not authorized") : 
+        next()
+     } catch (error) {
+         res.status(500).json({msg:error.msg})
+     }
 
     //roles ['admin','user','coach']
-    roles && !roles.includes(req.userId.role,console.log(req.userId.role))?
+
     
-    res.status(401).json("you are not authorized") : 
-    next()
+   
 }
 
 

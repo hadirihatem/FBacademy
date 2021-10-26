@@ -49,7 +49,7 @@ const Users = () => {
 
   return (
     <CRow>
-      <CCol xl={6}>
+      <CCol xl={13}>
         <CCard>
           <CCardHeader>
             Users
@@ -60,7 +60,7 @@ const Users = () => {
             items={user}
             fields={[
               { key: 'Fname', _classes: 'font-weight-bold' },
-              'Lname', 'role', 'age','email'
+              'Lname', 'role', 'age','email','phone','_id','permissionLevel'
             ]}
             hover
             striped
@@ -68,22 +68,22 @@ const Users = () => {
             activePage={page}
             clickableRows
             onRowClick={(item) => history.push(`/users/${item._id}`)}
-            scopedSlots = {{
-              'status':
-                (item)=>(
-                  <td>
-                    <CBadge color={getBadge(item.status)}>
-                      {item.status}
-                    </CBadge>
-                  </td>
-                )
-            }}
+            // scopedSlots = {{
+            //   'status':
+            //     (item)=>(
+            //       <td>
+            //         <CBadge color={getBadge(item.status)}>
+            //           {item.status}
+            //         </CBadge>
+            //       </td>
+            //     )
+            // }}
           />
           <CPagination
             activePage={page}
             onActivePageChange={pageChange}
             pages={5}
-            doubleArrows={false}
+            doubleArrows={true}
             align="center"
           />
           </CCardBody>

@@ -1,5 +1,6 @@
 
 const jwt=require('jsonwebtoken')
+const user = require('../models/user')
 require('dotenv').config()
 
 module.exports = (req,res,next)=>{
@@ -12,9 +13,14 @@ module.exports = (req,res,next)=>{
         if (err){
             throw err
         }
+        user.findById(payload.userId).then(user=>{
+          if(!user)
+        return   res.status(404).json({msg:'user not found'})
         req.userId=payload.userId
         next()
-
+        })
+        
+        
     })
   //  req.user=currentUser
     
