@@ -4,6 +4,26 @@ const expense = require ('../models/stock')
 
 
 
+exports.insert =(req,res)=>{
+  let newstock=new stock(req.body)
+  newstock.save()
+   .then((result)=>{
+     result != undefined
+       ? res.status(201).send({
+           code: 201,
+           status: "success",
+           message: "task created successfuly",
+           data: result,
+         })
+       : res.status(400).send({
+           code: 400,
+           status: "error",
+           message: "Invalid task object",
+         });
+       })
+ }
+
+ 
 //--------get stock ---------
 
 exports.getstock= (req, res) => {

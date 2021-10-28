@@ -156,6 +156,9 @@ exports.list = (req, res) => {
 };
 
 
+//------------------- findbyrole---------------
+
+
 exports.findByrole = (role) => {
   return new Promise((resolve, reject) => {
     User.find({ role: role }).exec(function (err, user) {

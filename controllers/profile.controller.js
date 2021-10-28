@@ -3,6 +3,25 @@ const profile = require("../models/profile");
 
 
 
+exports.insert =(req,res)=>{
+  let newprofile=new profile(req.body)
+  newprofile.save()
+   .then((result)=>{
+     result != undefined
+       ? res.status(201).send({
+           code: 201,
+           status: "success",
+           message: "task created successfuly",
+           data: result,
+         })
+       : res.status(400).send({
+           code: 400,
+           status: "error",
+           message: "Invalid task object",
+         });
+       })
+ }
+
 //--------get profile ---------
 
 exports.getprofile = (req, res) => {
