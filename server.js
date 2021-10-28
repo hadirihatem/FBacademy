@@ -5,7 +5,7 @@ const app = express();
 
 const userRoutes = require("./route/userRoutes/user.routes");
 const profileRoutes = require("./route/profilRoutes/pofile.routes");
-
+const expenseRoute=require("./route/expenseRoute/expenseRoute")
 app.use(cors());
 
 //connect to data base
@@ -25,6 +25,7 @@ app.use(express.json());
 
 userRoutes(app);
 profileRoutes(app);
+expenseRoute(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`server is running on PORT :${PORT}`));

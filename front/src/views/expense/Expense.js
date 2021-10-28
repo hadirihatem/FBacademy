@@ -1,45 +1,37 @@
 import React from 'react'
+import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+import { useSelector } from 'react-redux'
 
-const Expense = () => {
+
+const Expense = ({match}) => {
+  const exp = useSelector(state => state.exp.expenses)
+  const expense = exp.find( expense => expense._id   === match.params.id )
+  const expenseDetails = expense ? Object.entries(expense) :
+    [['id', (<span><CIcon className="text-muted" name="cui-icon-ban" /> Not found</span>)]]
+
   return (
     <CRow>
-      <CCol xl={13}>
+      <CCol lg={6}>
         <CCard>
           <CCardHeader>
-            expense
-            <small className="text-muted"> example</small>
+           expense  id: {match.params.id}
           </CCardHeader>
           <CCardBody>
-          <CDataTable
-            items={expense}
-            fields={[
-              { key: 'date', _classes: 'font-weight-bold' },
-              'stadiumRent', 'coachSalaryByHour', 'coachSalaryByMonth','maintenance','_id','payedOrNot'
-            ]}
-            hover
-            striped
-            itemsPerPage={5}
-            activePage={page}
-            clickableRows
-            onRowClick={(item) => history.push(`/expense/${item._id}`)}
-            // scopedSlots = {{
-            //   'status':
-            //     (item)=>(
-            //       <td>
-            //         <CBadge color={getBadge(item.status)}>
-            //           {item.status}
-            //         </CBadge>
-            //       </td>
-            //     )
-            // }}
-          />
-          <CPagination
-            activePage={page}
-            onActivePageChange={pageChange}
-            pages={5}
-            doubleArrows={true}
-            align="center"
-          />
+              <table className="table table-striped table-hover">
+                <tbody>
+                  {
+                    expenseDetails.map(([key, value], index) => {
+                      return (
+                        <tr key={index.toString()}>
+                          <td>{`${key}:`}</td>
+                          <td><strong>{value}</strong></td>
+                        </tr>
+                      )
+                    })
+                  }
+                </tbody>
+              </table>
           </CCardBody>
         </CCard>
       </CCol>

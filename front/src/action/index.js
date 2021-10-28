@@ -22,4 +22,11 @@ export const GETUSERS_FAIL = "GETUSERS_FAIL";
 
 
 
-//------------------------------
+//----------------expense------------
+export const GET_EXPENSE = "GET_EXPENSE";
+export const POSTEXPENSE_FAIL = "POSTEXPENSE_FAIL";
+export const GETEXPENSES_FAIL = "GETEXPENSES_FAIL";
+export const GETEXPENSES_SUCCESS = "GETEXPENSES_SUCCESS";
+
+
+

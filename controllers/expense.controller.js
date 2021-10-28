@@ -62,3 +62,29 @@ exports.getexpense = (req, res) => {
       })
       .catch(() => res.status(404).send("expense not found"));
   };
+
+
+
+
+  //-------------getallexpenses-----------------
+
+  exports.list = (req, res) => {
+    // let limit =
+    //   req.query.limit && req.query.limit <= 100 ? parseInt(req.query.limit) : 10;
+    let page = 0;
+    if (req.query) {
+      if (req.query.page) {
+        req.query.page = parseInt(req.query.page);
+        page = Number.isInteger(req.query.page) ? req.query.page : 0;
+      }
+    }
+    expense.find().then((result) => {
+      res.status(200).send({
+        code: 200,
+        status: "success",
+        message: "expense fetched",
+        data: result,
+      });
+    });
+  };
+  

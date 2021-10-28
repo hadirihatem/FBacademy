@@ -1,7 +1,10 @@
 import {
   GET_EXPENSE,
   POSTEXPENSE_FAIL,
-  
+  GETEXPENSES_FAIL,
+  GETEXPENSES_SUCCESS,
+
+
 } from "./index.js";
 import axios from "axios";
 import setToken from "../setToken";
@@ -30,3 +33,22 @@ export const getexpense = (id) => (dispatch) => {
     });
   });
 };
+
+
+
+//-------------get expenses list-------------
+
+export const getexpenses=()=>(dispatch)=>{
+axios.get("http://localhost:5000/expenses").then((res) => {
+  dispatch({
+    type: GETEXPENSES_SUCCESS,
+    payload: res.data.data,
+  });
+})
+.catch((err) => {
+  dispatch({
+    type: GETEXPENSES_FAIL,
+  });
+  // console.log(err);
+});
+}

@@ -3,7 +3,7 @@ const authmiddleware = require("../../helpers/midllware");
 const check = require ('../../helpers/checkRole')
 
 const initializePutRoutes = (app) => {
-  app.post("/expense", [  expensecontroller.insert]);
+  app.post("/expense", [authmiddleware, expensecontroller.insert]);
 }
 
   module.exports = initializePutRoutes;

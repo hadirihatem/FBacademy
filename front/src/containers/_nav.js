@@ -27,8 +27,23 @@ const _nav = [
 
   },
 
+  {
+    _tag: "CSidebarNavDropdown",
+    name: "Expenses",
+    route: "/expenses",
+    icon: "cil-puzzle",
+    _children: [
+      {
+        _tag: "CSidebarNavItem",
+        name: "expenses",
+        to: "/expenses",
+      },
 
- 
+    ],
+  },
+
+
+
 
   {
     _tag: "CSidebarNavDropdown",

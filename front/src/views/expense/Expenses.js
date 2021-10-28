@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
-import {useDispatch} from 'react-redux'
+import React, { useEffect, useState } from 'react'
 import {
   CBadge,
   CCard,
@@ -11,35 +9,28 @@ import {
   CRow,
   CPagination
 } from '@coreui/react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getexpenses } from 'src/action/expenseaction';
+import { useHistory, useLocation } from 'react-router';
 
-import { useSelector } from 'react-redux'
-import { getUsersList } from 'src/action/useraction'
 
+const Expenses = () => {
 
-const getBadge = status => {
-  switch (status) {
-    case 'Active': return 'success'
-    case 'Inactive': return 'secondary'
-    case 'Pending': return 'warning'
-    case 'Banned': return 'danger'
-    default: return 'primary'
-  }
-}
-
-const Users = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUsersList());
+    dispatch(getexpenses());
   }, []);
-  const user = useSelector(state => state.user.users)
+
+  const expense = useSelector(state => state.exp.expenses)
+
   const history = useHistory()
   const queryPage = useLocation().search.match(/page=([0-9]+)/, '')
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1)
   const [page, setPage] = useState(currentPage)
 
   const pageChange = newPage => {
-    currentPage !== newPage && history.push(`/users?page=${newPage}`)
+    currentPage !== newPage && history.push(`/expenses?page=${newPage}`)
   }
 
   useEffect(() => {
@@ -51,22 +42,22 @@ const Users = () => {
       <CCol xl={13}>
         <CCard>
           <CCardHeader>
-            Users
+            expense
             <small className="text-muted"> example</small>
           </CCardHeader>
           <CCardBody>
           <CDataTable
-            items={user}
+            items={expense}
             fields={[
-              { key: 'Fname', _classes: 'font-weight-bold' },
-              'Lname', 'role', 'age','email','phone','_id','permissionLevel'
+              { key: 'date', _classes: 'font-weight-bold' },
+              'stadiumRent', 'coachSalaryByHour', 'coachSalaryByMonth','maintenance','_id','payedOrNot'
             ]}
             hover
             striped
             itemsPerPage={5}
             activePage={page}
             clickableRows
-            onRowClick={(item) => history.push(`/users/${item._id}`)}
+            onRowClick={(item) => history.push(`/expenses/${item._id}`)}
             // scopedSlots = {{
             //   'status':
             //     (item)=>(
@@ -92,4 +83,4 @@ const Users = () => {
   )
 }
 
-export default Users
+export default Expenses
