@@ -1,4 +1,5 @@
 const mongoose = require ('mongoose')
+const moment=require('moment')
 
 const UserSchema = new mongoose.Schema({
     Fname : String ,
@@ -20,7 +21,10 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default:1,
       },
-    
+      date: {
+        type: Date,
+        default: moment().format(),
+      },
 })
 
 module.exports=mongoose.model("user" , UserSchema )

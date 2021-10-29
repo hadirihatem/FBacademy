@@ -16,7 +16,7 @@ import {
 import CIcon from '@coreui/icons-react'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { registerUser } from 'src/action/authaction';
+import { registerUser } from '../../../action/authaction';
 
 const Register = ({history}) => {
   const [info, setInfo] = useState({
@@ -27,15 +27,11 @@ const Register = ({history}) => {
     age:"",
     password:"",
     permissionLevel:1,
+    role:"",
  });
 const dispatch = useDispatch()
-const auth = useSelector((state) => state.auth);
-useEffect(() => {
-if(auth.isAuth){
-history.push("/dashboard")
-}
 
-}, [auth.isAuth,history])
+
 
  const handlechange=e=>{
      setInfo({...info,[e.target.name]:e.target.value})
@@ -53,7 +49,7 @@ history.push("/dashboard")
               <CCardBody className="p-4">
                 <CForm onSubmit={registerNow} >
                   <h1>Register</h1>
-                  <p className="text-muted">Create your account</p>
+                  <p className="text-muted">Create account</p>
                   <CInputGroup className="mb-3">
                     <CInputGroupPrepend>
                       <CInputGroupText>
@@ -71,6 +67,15 @@ history.push("/dashboard")
                   </CInputGroupPrepend>
                   <CInput type="text" placeholder="Lastname" name="Lname"  onChange={handlechange} />
                 </CInputGroup>
+
+                <CInputGroup className="mb-3">
+                <CInputGroupPrepend>
+                  <CInputGroupText>
+                    <CIcon name="cil-user" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CInput type="text" placeholder="role" name="role"  onChange={handlechange} />
+              </CInputGroup>
 
                 <CInputGroup className="mb-3">
                 <CInputGroupPrepend>

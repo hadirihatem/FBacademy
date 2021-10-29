@@ -16,7 +16,7 @@ import CIcon from '@coreui/icons-react'
 
 import MainChartExample from '../charts/MainChartExample.js'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadUser } from 'src/action/authaction.js'
+import { loadUser } from '../../action/authaction'
 
 const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
 const WidgetsBrand = lazy(() => import('../widgets/WidgetsBrand.js'))

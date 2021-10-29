@@ -6,9 +6,9 @@ var findByrole= require('../controllers/user.controller')
 
  exports.authroles=(...roles)=> async (req,res,next)=> {
      try {
-         console.log(roles)
+        
         const user= await User.findById(req.userId)
-        console.log(user)
+       
         roles && !roles.includes(user?.role)?
         res.status(401).json("you are not authorized") : 
         next()

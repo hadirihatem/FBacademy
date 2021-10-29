@@ -78,7 +78,7 @@ exports.getexpense = (req, res) => {
         page = Number.isInteger(req.query.page) ? req.query.page : 0;
       }
     }
-    expense.find().then((result) => {
+    expense.find().select("-__v").then((result) => {
       res.status(200).send({
         code: 200,
         status: "success",

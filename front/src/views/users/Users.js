@@ -13,7 +13,7 @@ import {
 } from '@coreui/react'
 
 import { useSelector } from 'react-redux'
-import { getUsersList } from 'src/action/useraction'
+import { getUsersList } from '../../action/useraction'
 
 
 const getBadge = status => {
@@ -59,7 +59,7 @@ const Users = () => {
             items={user}
             fields={[
               { key: 'Fname', _classes: 'font-weight-bold' },
-              'Lname', 'role', 'age','email','phone','_id','permissionLevel'
+              'Lname', 'role', 'age','email','phone','_id','permissionLevel','date'
             ]}
             hover
             striped

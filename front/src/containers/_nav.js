@@ -1,5 +1,6 @@
 import React from "react";
 import CIcon from "@coreui/icons-react";
+import { cilBell } from "@coreui/icons";
 
 const _nav = [
   {
@@ -25,6 +26,34 @@ const _nav = [
       text: "NEW",
     },
 
+
+  },
+  {
+    _tag: 'CSidebarNavDropdown',
+    name: 'Notifications',
+    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Alerts',
+        to: '/notifications/alerts',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Badges',
+        to: '/notifications/badges',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Modal',
+        to: '/notifications/modals',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Toasts',
+        to: '/notifications/toasts',
+      },
+    ],
   },
 
   {

@@ -38,10 +38,12 @@ const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Expense =React.lazy(()=> import('./views/expense/Expense'))
 const Expenses=React.lazy(()=>import ('./views/expense/Expenses'))
-
-
+const Register = React.lazy(() => import('./views/pages/register/Register'));
+const Test = React.lazy(()=> import ('./views/test/Test'))
  const routes= [
   { path: '/', exact: true, name: 'Home' },
+  { path: '/test', name: 'Test', component: Test },
+  { path: '/register', name: 'Register', component: Register },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },

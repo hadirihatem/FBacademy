@@ -10,7 +10,8 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { useDispatch } from 'react-redux'
-import { logoutUser } from 'src/action/authaction'
+import { logoutUser } from '../action/authaction'
+
 
 const TheHeaderDropdown = () => {
   const dispatch = useDispatch()
