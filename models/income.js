@@ -14,7 +14,10 @@ const incomeSchema = new mongoose.Schema({
         type : String,
         required :true ,
     },
-    date : String,
+    date: {
+        type: String,
+        default: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      },
     payedOrNot:{
         type : String,
         required :true ,

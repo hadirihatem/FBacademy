@@ -11,8 +11,6 @@ import {
   CModalHeader,
   CModalFooter,
   CModalBody,
-  CContainer,
-  CCard,
   CLabel,
 } from "@coreui/react";
 
@@ -41,7 +39,7 @@ const Modalexpense = () => {
     setPrimary(!primary)
     setTimeout(()=>{
       dispatch(getexpenses())
-    }, 2000)
+    }, 1000)
   };
 
   return (
@@ -80,7 +78,7 @@ const Modalexpense = () => {
         </CModalBody>
         <CModalFooter>
           <CButton color="primary" onClick={handleClose}>
-            Do Something
+            Submit
           </CButton>{" "}
           <CButton color="secondary" onClick={() => setPrimary(!primary)}>
             Cancel

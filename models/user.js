@@ -22,8 +22,8 @@ const UserSchema = new mongoose.Schema({
         default:1,
       },
       date: {
-        type: Date,
-        default: moment().format(),
+        type: String,
+        default: moment().format('MMMM Do YYYY, h:mm:ss a'),
       },
 })
 

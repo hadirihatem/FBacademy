@@ -9,8 +9,8 @@ const expenseSchema = new mongoose.Schema({
    
     payedOrNot: String,
     date: {
-        type: Date,
-        default: moment().format(),
+        type: String,
+        default: moment().format('MMMM Do YYYY, h:mm:ss a'),
       },
 })
 
